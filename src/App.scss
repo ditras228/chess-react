@@ -1,0 +1,43 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.app{
+  width: 100vw;
+  height: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__board{
+    width: calc(64px * 8);
+    height: calc(64px * 8);
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__cell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height:  64px;
+
+    img{
+      width: 48px;
+      height: 48px;
+      position: relative;
+    }
+    &.black{
+      background-color: saddlebrown;
+    }
+    &.white{
+      background-color: blanchedalmond;
+    }
+  }
+}
+
+
+
+
