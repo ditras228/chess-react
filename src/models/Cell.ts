@@ -1,6 +1,6 @@
-import {Colors} from "./Colors";
-import {Figure} from "./figures/Figure";
-import {Board} from "./Board";
+import { Colors } from "./Colors";
+import { Figure } from "./figures/Figure";
+import { Board } from "./Board";
 
 export class Cell {
   readonly x: number;
@@ -26,13 +26,17 @@ export class Cell {
     this.available = false;
     this.id = Math.random();
   }
-  addLostFigure(figure: Figure){
-    figure.color===Colors.BLACK? this.board.lostBlackFigures.push(figure):
-   this.board.lostWhiteFigures.push(figure)
+  addLostFigure(figure: Figure) {
+    figure.color === Colors.BLACK
+      ? this.board.lostBlackFigures.push(figure)
+      : this.board.lostWhiteFigures.push(figure);
   }
   moveFigure(target: Cell) {
     if (this.figure && this.figure?.canMove(target)) {
       this.figure.moveFigure(target);
+      if (target.figure) {
+        this.addLostFigure(target.figure);
+      }
       target.setFigure(this.figure);
       this.figure = null;
     }
@@ -78,6 +82,7 @@ export class Cell {
     }
     return true;
   }
+
   isEmptyDiagonal(target: Cell): boolean {
     const absX = Math.abs(target.x - this.x);
     const absY = Math.abs(target.y - this.y);

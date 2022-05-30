@@ -35,8 +35,6 @@ const BoardComponent: FC<BoardProps> = ({
     }
     if (cell.figure?.color === currentPlayer?.color) {
       setSelectedCell(cell);
-    } else {
-      setSelectedCell(null);
     }
   }
 
@@ -53,7 +51,7 @@ const BoardComponent: FC<BoardProps> = ({
   return (
     <div>
       {currentPlayer?.color}
-      <div className="app__board">
+      <div className="App__board">
         {board.cells.map((row, index) => (
           <React.Fragment key={index}>
             {row.map((cell) => (

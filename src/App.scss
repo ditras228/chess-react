@@ -3,9 +3,9 @@
   padding: 0;
 }
 
-.app{
+.App{
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,12 @@
     display: flex;
     flex-wrap: wrap;
   }
-
+  &__lost{
+    height: calc(50vw - 60px);
+    padding: 30px;
+    margin-left: 50px;
+    background-color: lightyellow;
+  }
   &__cell{
     display: flex;
     justify-content: center;
