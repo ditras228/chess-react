@@ -1,6 +1,6 @@
-import { Colors } from "./Colors";
-import { Figure } from "./figures/Figure";
-import { Board } from "./Board";
+import {Colors} from "./Colors";
+import {Figure} from "./figures/Figure";
+import {Board} from "./Board";
 
 export class Cell {
   readonly x: number;
@@ -26,7 +26,10 @@ export class Cell {
     this.available = false;
     this.id = Math.random();
   }
-
+  addLostFigure(figure: Figure){
+    figure.color===Colors.BLACK? this.board.lostBlackFigures.push(figure):
+   this.board.lostWhiteFigures.push(figure)
+  }
   moveFigure(target: Cell) {
     if (this.figure && this.figure?.canMove(target)) {
       this.figure.moveFigure(target);
