@@ -35,6 +35,15 @@
     &.white{
       background-color: blanchedalmond;
     }
+    &.selected{
+      background-color: green;
+    }
+    .available{
+      height: 12px;
+      width: 12px;
+      border-radius: 50%;
+      background-color: green;
+    }
   }
 }
 
