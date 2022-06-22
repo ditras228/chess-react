@@ -12,6 +12,7 @@ export class Board {
   cells: Cell[][] = [];
   lostBlackFigures: Figure[] = [];
   lostWhiteFigures: Figure[] = [];
+
   public initCells(): void {
     for (let i = 0; i < 8; i++) {
       const row: Cell[] = [];
@@ -25,6 +26,7 @@ export class Board {
       this.cells.push(row);
     }
   }
+
   public getCopyBoard(): Board {
     const newBoard = new Board();
     newBoard.cells = this.cells;
@@ -32,6 +34,7 @@ export class Board {
     newBoard.lostBlackFigures = this.lostBlackFigures;
     return newBoard;
   }
+
   public highLightCells(selectedCell: Cell | null) {
     for (let i = 0; i < this.cells.length; i++) {
       const row = this.cells[i];
@@ -41,6 +44,7 @@ export class Board {
       }
     }
   }
+
   public getCell(x: number, y: number): Cell {
     return this.cells[y][x];
   }

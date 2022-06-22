@@ -22,7 +22,10 @@ const BoardComponent: FC<BoardProps> = ({
     highLightCells();
   }, [selectedCell]);
 
-  function click(cell: Cell) {
+  function click(cell: Cell): void {
+    if (cell.figure?.color === currentPlayer?.color) {
+      setSelectedCell(cell);
+    }
     if (
       selectedCell &&
       selectedCell !== cell &&
@@ -30,28 +33,26 @@ const BoardComponent: FC<BoardProps> = ({
     ) {
       selectedCell.moveFigure(cell);
       swapPlayer();
-
       setSelectedCell(null);
-    }
-    if (cell.figure?.color === currentPlayer?.color) {
-      setSelectedCell(cell);
     }
   }
 
-  function highLightCells() {
+  function highLightCells(): void {
     board.highLightCells(selectedCell);
     updateBoard();
   }
 
-  function updateBoard() {
+  function updateBoard(): void {
     const newBoard = board.getCopyBoard();
     setBoard(newBoard);
   }
 
   return (
     <div>
-      {currentPlayer?.color}
-      <div className="App__board">
+      <div className="app__container__turn">
+        Ход {currentPlayer?.color === "white" ? "белого" : "черного"} игрока
+      </div>
+      <div className="app__container__board">
         {board.cells.map((row, index) => (
           <React.Fragment key={index}>
             {row.map((cell) => (

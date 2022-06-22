@@ -26,12 +26,14 @@ export class Cell {
     this.available = false;
     this.id = Math.random();
   }
-  addLostFigure(figure: Figure) {
+
+  addLostFigure(figure: Figure): void {
     figure.color === Colors.BLACK
       ? this.board.lostBlackFigures.push(figure)
       : this.board.lostWhiteFigures.push(figure);
   }
-  moveFigure(target: Cell) {
+
+  moveFigure(target: Cell): void {
     if (this.figure && this.figure?.canMove(target)) {
       this.figure.moveFigure(target);
       if (target.figure) {
@@ -41,19 +43,23 @@ export class Cell {
       this.figure = null;
     }
   }
+
   isEmpty(): boolean {
     return this.figure === null;
   }
+
   isEnemy(target: Cell): boolean {
     if (target.figure) {
       return target.figure?.color !== this.figure?.color;
     }
     return false;
   }
-  setFigure(figure: Figure) {
+
+  setFigure(figure: Figure): void {
     this.figure = figure;
     this.figure.cell = this;
   }
+
   isEmptyVertical(target: Cell): boolean {
     if (this.x !== target.x) {
       return false;
@@ -68,7 +74,8 @@ export class Cell {
     }
     return true;
   }
-  isEmptyHorizontal(target: Cell) {
+
+  isEmptyHorizontal(target: Cell): boolean {
     if (this.y !== target.y) {
       return false;
     }
