@@ -12,6 +12,7 @@ export class Pawn extends Figure {
     this.logo = color === Colors.BLACK ? blackLogo : whiteLogo;
     this.name = FigureName.PAWN;
   }
+
   canMove(target: Cell): boolean {
     if (!super.canMove(target)) {
       return false;
@@ -35,8 +36,10 @@ export class Pawn extends Figure {
     ) {
       return true;
     }
+
     return false;
   }
+
   moveFigure(target: Cell): void {
     super.moveFigure(target);
     this.isFirstStep = false;

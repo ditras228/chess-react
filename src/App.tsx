@@ -7,6 +7,8 @@ import { Colors } from "./models/Colors";
 import LostFigures from "./components/LostFigures";
 
 function App() {
+  document.title = "Chess on React";
+
   const [board, setBoard] = useState(new Board());
   const [whitePLayer, setWhitePlayer] = useState(new Player(Colors.WHITE));
   const [blackPLayer, setBlackPlayer] = useState(new Player(Colors.BLACK));

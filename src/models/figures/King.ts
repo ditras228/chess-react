@@ -15,10 +15,27 @@ export class King extends Figure {
     if (!super.canMove(target)) {
       return false;
     }
+
+    // Vertical
     if (
       (target.y === this.cell.y + 1 || target.y === this.cell.y - 1) &&
-      target.x === this.cell.x &&
-      this.cell.board.getCell(target.x, target.y).isEmpty()
+      target.x === this.cell.x
+    ) {
+      return true;
+    }
+
+    // Horizontal
+    if (
+      (target.x === this.cell.x + 1 || target.x === this.cell.x - 1) &&
+      target.y === this.cell.y
+    ) {
+      return true;
+    }
+
+    // Diagonal
+    if (
+      (target.x === this.cell.x + 1 || target.x === this.cell.x - 1) &&
+      (target.y === this.cell.y + 1 || target.y === this.cell.y - 1)
     ) {
       return true;
     }
